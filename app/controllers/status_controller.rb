@@ -1,10 +1,10 @@
 class StatusController < ApplicationController
     private
 
-    def get_time
-        t = Time.now
-        t.strftime('%H:%M')
-    end
+    # def get_time
+    #     t = Time.now
+    #     t.strftime('%H:%M')
+    # end
 
     def get_temps
         temps = `g currenttemp`
@@ -35,7 +35,7 @@ class StatusController < ApplicationController
     public
     
     def index
-        @time = get_time
+        #@time = get_time
         @temp = get_temps
         @diskspace = get_diskspace
         @downloads = get_amount_of_downloads
