@@ -23,12 +23,12 @@ class StatusController < ApplicationController
     def get_cpu_idle
         stats = `mpstat`
         stat_array = stats.split(' ')
-        idle = stat_array.last.gsub!(',','.')
-        idle.to_f
+        stat_array.last.to_f
     end
 
     def get_cpu_load
-        cpu_load = 100 - get_cpu_idle
+        cpu_idle = get_cpu_idle
+        cpu_load = 100 - cpu_idle
         cpu_load.round(2)
     end
 
@@ -39,7 +39,7 @@ class StatusController < ApplicationController
         @temp = get_temps
         @diskspace = get_diskspace
         @downloads = get_amount_of_downloads
-        @load = get_cpu_load
         @idle = get_cpu_idle
+        @load = get_cpu_load
     end
 end
