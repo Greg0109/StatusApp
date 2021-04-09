@@ -16,6 +16,11 @@ class StatusController < ApplicationController
         `g diskspace`
     end
 
+    def get_storage_space
+        space = `df -h /home/pi/Desktop/Storage/ | awk '{print $2, $3, $4, $5}' | awk 'FNR==2'`
+        spacearray = space.split(' ')
+    end
+
     def get_amount_of_downloads
         `g torrent check | wc -l`
     end
@@ -38,6 +43,7 @@ class StatusController < ApplicationController
         #@time = get_time
         @temp = get_temps
         @diskspace = get_diskspace
+        @storagespace = get_storage_space
         @downloads = get_amount_of_downloads
         @idle = get_cpu_idle
         @load = get_cpu_load

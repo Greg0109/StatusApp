@@ -1,3 +1,2 @@
 <p>Temperature: <%= @temp %><br>CPU: Idle: <%= @idle %>% - Load: <%= @load %>%</p>
-<p><%= @diskspace %></p>
-<p>Active downloads: <%= @downloads %></p>
+<p><%= @diskspace %> Storage space: Total: <%= @storagespace[0] %> Used: <%= @storagespace[1] %> Left: <%= @storagespace[2] %> Percentage: <%= @storagespace[3] %> Active downloads: <%= @downloads %></p>
